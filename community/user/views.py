@@ -12,8 +12,7 @@ def home(request):
     if user_id:
         pre_user = user.objects.get(pk=user_id)
         #pk 기본키
-        return HttpResponse(pre_user.username)
-    return HttpResponse('Home!')
+    return render(request,'home.html')
 
 def logout(request):
     if request.session.get('user'):
