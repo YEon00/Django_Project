@@ -1,0 +1,2 @@
+basic django project
+
