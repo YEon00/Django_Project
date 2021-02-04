@@ -1,35 +1,31 @@
 {% extends "base.html" %}
 
 {% block contents %}
-<div class="row mt-5">
-    <div class="col-12 text-center">
+
+<div class="row">
+    <div class="col-12">
         <h1>로그인</h1>
     </div>
 </div>
 <div class="row mt-5">
-    <div class="row mt-5">
-        <div class="col-12">
+    <div class="col-12">
         {{ error }}
-        </div>
-            
     </div>
+</div>
+<div class="row mt-5">
     <div class="col-12">
         <form method="POST" action=".">
             {% csrf_token %}
-            <!-- 암호화된 키를 숨겨놓음 -->
             {% for field in form %}
             <div class="form-group">
-                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-                <input type="{{field.field.widget.input_type}}" class="form-control" id="{{ field.id_for_label }}" 
-                placeholder="{{field.label}}" name="{{field.name}}"/>
+                <label for="{{field.id_for_label}}">{{field.label}}</label>
+                <input type="{{field.field.widget.input_type}}" class="form-control" id="{{field.id_for_label}}" placeholder="{{field.id_for_label}}" name="{{field.name}}"/>
             </div>
             {% if field.errors %}
             <span style="color: red;">{{field.errors}}</span>
             {% endif %}
-            {% endfor %}
-            <!-- {{ form.as_p }}
-            각 필드에 p태그를 삽입해준다. -->
-            <button type="submit" class="btn btn-primary">로그안</button>
+            {% endfor%}
+            <button type="submit" class="btn btn-primary">login</button>
         </form>
     </div>
 </div>
