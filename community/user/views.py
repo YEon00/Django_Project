@@ -9,8 +9,8 @@ def home(request):
     user_id = request.session.get('user')
     if user_id:
         pre_user = YJuser.objects.get(pk=user_id)
-        return HttpResponse(pre_user.username)
-    return HttpResponse('Home!')
+        
+    return render(request,'home.html')
 
 def logout(request):
     if request.session.get('user'):
